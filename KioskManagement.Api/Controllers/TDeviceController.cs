@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using KioskManagement.Common.Ultilities;
 using KioskManagement.Model.MappingModels;
 using KioskManagement.Model.Models;
 using KioskManagement.Model.ViewModels;
@@ -193,6 +194,7 @@ namespace KioskManagement.WebApi.Controllers
                     TotalCount = totalRow,
                     TotalPages = (int)Math.Ceiling((decimal)totalRow / pageSize)
                 };
+                var res = await Lib.MethodGetAsync("https://partner.hanet.ai/place/getPlaces");
                 return Ok(responseData);
             }
             catch (Exception dex)
